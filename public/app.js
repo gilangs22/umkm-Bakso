@@ -53,6 +53,9 @@ function api(path, options = {}) {
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || "Permintaan gagal.");
     return data;
+  }).catch(error => {
+    if (window.demoApi) return window.demoApi(path, options);
+    throw error;
   });
 }
 

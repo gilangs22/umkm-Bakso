@@ -5,6 +5,7 @@
   "description": "Sistem pemesanan dan rekomendasi menu berbasis mood untuk QR self-order.",
   "main": "server.js",
   "scripts": {
+    "build": "node build-static.js",
     "start": "node server.js"
   },
   "engines": {
