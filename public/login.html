@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Internal - Mood Gacoan</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .login-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-soft);
+        }
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+        }
+        .login-card h1 { margin-bottom: 0.5rem; }
+        .login-card p { margin-bottom: 2rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="panel login-card">
+            <div class="brand-block" style="margin-bottom: 2rem;">
+                <div class="brand-mark">MG</div>
+                <div>
+                    <strong>Mood Gacoan</strong>
+                    <span>Internal Staff</span>
+                </div>
+            </div>
+            <h1>Selamat Datang</h1>
+            <p>Masuk sebagai kasir, dapur, atau admin untuk mengelola antrean.</p>
+            
+            <form id="loginForm">
+                <label class="field">
+                    <span>Username</span>
+                    <input type="text" id="username" required placeholder="Contoh: kasir / dapur">
+                </label>
+                <label class="field" style="margin-top: 1rem;">
+                    <span>Password</span>
+                    <input type="password" id="password" required placeholder="Isi password untuk simulasi">
+                </label>
+                <button class="primary-btn" id="loginBtn" type="submit" style="margin-top: 2rem; width: 100%;">Masuk Sekarang</button>
+            </form>
+            <div id="errorMsg" style="color: var(--danger); margin-top: 1rem; text-align: center; font-size: 0.9rem; display: none;">
+                Username atau password salah.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const loginBtn = document.getElementById('loginBtn');
+
+            errorMsg.style.display = 'none';
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Memproses...';
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'Login gagal.');
+
+                localStorage.setItem('adminToken', data.token);
+                localStorage.setItem('adminRole', data.user.role);
+                localStorage.setItem('adminUsername', data.user.username);
+                window.location.href = '/admin.html';
+            } catch (error) {
+                errorMsg.textContent = error.message;
+                errorMsg.style.display = 'block';
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Masuk Sekarang';
+            }
+        });
+    </script>
+</body>
+</html>

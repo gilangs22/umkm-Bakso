@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard - Bakso Mak Yas</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="side-panel">
+            <div class="brand-block">
+                <div class="brand-mark">BY</div>
+                <div>
+                    <strong>Bakso Mak Yas</strong>
+                    <span>Admin Dashboard</span>
+                </div>
+            </div>
+            <nav class="nav-tabs" aria-label="Navigasi internal">
+                <button class="nav-tab active" data-view="kitchen" type="button">Antrean Pesanan</button>
+                <button class="nav-tab" data-view="menu" type="button">Kelola Menu</button>
+                <button class="nav-tab" data-view="design" type="button">Dokumentasi</button>
+            </nav>
+            <div class="session-box" style="margin-top: auto;">
+                <span>Logged in as</span>
+                <strong id="userRoleLabel">Staff</strong>
+                <button class="ghost-btn" id="logoutBtn" style="width: 100%; margin-top: 1rem;">Keluar</button>
+            </div>
+        </aside>
+
+        <main>
+            <!-- View: Kitchen & Cashier -->
+            <section class="view active" id="kitchenView">
+                <header class="topbar compact">
+                    <div>
+                        <p class="eyebrow">Operasional Internal</p>
+                        <h1 id="welcomeStaff">Dashboard Kasir & Dapur Bakso Mak Yas</h1>
+                    </div>
+                    <button class="ghost-btn" id="refreshOrdersBtn" type="button">Refresh Data</button>
+                </header>
+                <div class="ops-grid">
+                    <section class="panel">
+                        <div class="panel-heading">
+                            <h2>Antrean Pesanan</h2>
+                            <span id="orderQueueCount">0 pesanan</span>
+                        </div>
+                        <div class="order-controls">
+                            <button class="ghost-btn" id="filterTableBtn" type="button">Tampilkan Meja 01</button>
+                            <button class="ghost-btn" id="clearCompletedBtn" type="button">Bersihkan Semua</button>
+                        </div>
+                        <div class="order-list" id="orderList"></div>
+                    </section>
+                    <section class="panel">
+                        <div class="panel-heading">
+                            <h2>Kamus Data Ringkas</h2>
+                        </div>
+                        <div class="data-dictionary">
+                            <div><b>USERS</b><span>kasir, admin, dapur</span></div>
+                            <div><b>MENUS</b><span>nama, harga, status, deskripsi</span></div>
+                            <div><b>MOOD_CATEGORIES</b><span>pedas, manis, asin, segar</span></div>
+                            <div><b>ORDERS</b><span>sesi QR, total, bayar, status</span></div>
+                            <div><b>PAYMENTS</b><span>metode, amount, referensi</span></div>
+                            <div><b>ORDER_STATUS_LOGS</b><span>histori status dan aktor</span></div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- View: Menu Management -->
+            <section class="view" id="menuView">
+                <header class="topbar compact">
+                    <div>
+                        <p class="eyebrow">Kelola Menu & Gambar</p>
+                        <h1>Manajemen Menu Bakso Mak Yas</h1>
+                    </div>
+                    <button class="primary-btn" id="addMenuBtn" type="button" onclick="showAddMenuForm()">+ Tambah Menu</button>
+                </header>
+                <div style="max-width: 1200px; margin: 0 auto;">
+                    <div class="menu-grid" id="menuManagementGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; padding: 20px 0;">
+                    </div>
+                </div>
+
+                <!-- Modal: Edit/Upload Menu Image -->
+                <div class="status-overlay" id="menuModalOverlay">
+                    <div class="status-modal" style="max-width: 400px; max-height: 90vh; overflow-y: auto;">
+                        <button class="icon-btn close-status" onclick="closeMenuModal()" aria-label="Tutup">×</button>
+                        <div id="menuModalContent"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- View: Design / Documentation -->
+            <section class="view" id="designView">
+                <header class="topbar compact">
+                    <div>
+                        <p class="eyebrow">Dokumentasi Sistem</p>
+                        <h1>Alur Sistem Bakso Mak Yas</h1>
+                    </div>
+                </header>
+                <div class="blueprint">
+                    <article>
+                        <span>01</span>
+                        <h2>Scan QR & Sesi</h2>
+                        <p>Pelanggan masuk sebagai guest dengan nomor meja dan id sesi, tanpa akun personal.</p>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <h2>Pilih Mood</h2>
+                        <p>Mood dipakai sebagai filter rekomendasi menu: pedas, manis, asin, dan segar.</p>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <h2>Pesan & Bayar</h2>
+                        <p>Keranjang menyimpan detail item, catatan, total harga, dan metode pembayaran.</p>
+                    </article>
+                    <article>
+                        <span>04</span>
+                        <h2>Status Real-Time</h2>
+                        <p>Kasir atau dapur memperbarui status dari dibayar sampai selesai, pelanggan melihat progresnya.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/admin-app.js"></script>
+</body>
+</html>

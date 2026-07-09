@@ -1,0 +1,393 @@
+{
+  "users": [
+    {
+      "id": "U001",
+      "username": "kasir",
+      "role": "kasir"
+    },
+    {
+      "id": "U002",
+      "username": "dapur",
+      "role": "dapur"
+    },
+    {
+      "id": "U003",
+      "username": "admin",
+      "role": "admin"
+    }
+  ],
+  "menus": [
+    {
+      "id": "M001",
+      "name": "Baksoh",
+      "price": 10000,
+      "mood": [
+        "pedas",
+        "asin"
+      ],
+      "category": "Makanan",
+      "stock": true,
+      "description": "Bakso kuah gurih khas Mak Yas. Bisa request level pedas, jumlah sendok sambal, pakai mie atau tanpa mie.",
+      "image": "/IMAGE_FIXX/Bakso/Bakso.jpeg",
+      "customizations": [
+        {
+          "id": "spice_level",
+          "name": "Mood Pedas",
+          "type": "radio",
+          "default": "normal",
+          "options": [
+            {
+              "label": "Original / tidak pedas",
+              "value": "original"
+            },
+            {
+              "label": "Pedas normal",
+              "value": "normal"
+            },
+            {
+              "label": "Pedas nampol",
+              "value": "nampol"
+            }
+          ]
+        },
+        {
+          "id": "sambal",
+          "name": "Request Sambal",
+          "type": "radio",
+          "default": "2_sendok",
+          "options": [
+            {
+              "label": "1 sendok",
+              "value": "1_sendok"
+            },
+            {
+              "label": "2 sendok",
+              "value": "2_sendok"
+            },
+            {
+              "label": "3 sendok",
+              "value": "3_sendok"
+            },
+            {
+              "label": "Pisah sambal",
+              "value": "pisah"
+            }
+          ]
+        },
+        {
+          "id": "bakso_options",
+          "name": "Pilihan Isi",
+          "type": "checkbox",
+          "options": [
+            {
+              "label": "Pakai mie",
+              "value": "mie"
+            },
+            {
+              "label": "Pakai bihun",
+              "value": "bihun"
+            },
+            {
+              "label": "Tambah kuah",
+              "value": "extra_kuah"
+            },
+            {
+              "label": "Tanpa bawang goreng",
+              "value": "tanpa_bawang"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M002",
+      "name": "Risol",
+      "price": 1000,
+      "mood": [
+        "asin"
+      ],
+      "category": "Makanan",
+      "stock": true,
+      "description": "Jajan tempura risol harga seribuan. Cocok ditambah sebagai camilan, bisa pilih saus dan jumlah pcs.",
+      "image": "/IMAGE_FIXX/Risol/Risol.jpeg",
+      "customizations": [
+        {
+          "id": "jumlah",
+          "name": "Jumlah",
+          "type": "radio",
+          "default": "5pcs",
+          "options": [
+            {
+              "label": "1 pcs",
+              "value": "1pcs"
+            },
+            {
+              "label": "5 pcs",
+              "value": "5pcs"
+            },
+            {
+              "label": "10 pcs",
+              "value": "10pcs"
+            }
+          ]
+        },
+        {
+          "id": "saus",
+          "name": "Saus",
+          "type": "checkbox",
+          "options": [
+            {
+              "label": "Saus pedas",
+              "value": "saus_pedas"
+            },
+            {
+              "label": "Saus tomat",
+              "value": "saus_tomat"
+            },
+            {
+              "label": "Mayonaise",
+              "value": "mayo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M003",
+      "name": "Sosis",
+      "price": 1000,
+      "mood": [
+        "asin",
+        "pedas"
+      ],
+      "category": "Makanan",
+      "stock": true,
+      "description": "Jajan tempura sosis harga seribuan. Bisa request saus, mayo, atau dibakar lebih kering.",
+      "image": "/IMAGE_FIXX/Sosis/Sosis.jpeg",
+      "customizations": [
+        {
+          "id": "jumlah",
+          "name": "Jumlah",
+          "type": "radio",
+          "default": "5pcs",
+          "options": [
+            {
+              "label": "1 pcs",
+              "value": "1pcs"
+            },
+            {
+              "label": "5 pcs",
+              "value": "5pcs"
+            },
+            {
+              "label": "10 pcs",
+              "value": "10pcs"
+            }
+          ]
+        },
+        {
+          "id": "sosis_request",
+          "name": "Request",
+          "type": "checkbox",
+          "options": [
+            {
+              "label": "Saus pedas",
+              "value": "saus_pedas"
+            },
+            {
+              "label": "Mayonaise",
+              "value": "mayo"
+            },
+            {
+              "label": "Lebih kering",
+              "value": "kering"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M004",
+      "name": "Pentol Kriwil",
+      "price": 1000,
+      "mood": [
+        "pedas",
+        "asin"
+      ],
+      "category": "Makanan",
+      "stock": true,
+      "description": "Pentol kriwil seribuan dengan tekstur renyah. Bisa pilih sambal, saus, dan level pedas sesuai mood.",
+      "image": "/IMAGE_FIXX/Pentol/Pentol kriwil.jpeg",
+      "customizations": [
+        {
+          "id": "jumlah",
+          "name": "Jumlah",
+          "type": "radio",
+          "default": "5pcs",
+          "options": [
+            {
+              "label": "1 pcs",
+              "value": "1pcs"
+            },
+            {
+              "label": "5 pcs",
+              "value": "5pcs"
+            },
+            {
+              "label": "10 pcs",
+              "value": "10pcs"
+            }
+          ]
+        },
+        {
+          "id": "pentol_spice",
+          "name": "Level Pedas",
+          "type": "radio",
+          "default": "sedang",
+          "options": [
+            {
+              "label": "Tidak pedas",
+              "value": "tidak_pedas"
+            },
+            {
+              "label": "Sedang",
+              "value": "sedang"
+            },
+            {
+              "label": "Pedas banget",
+              "value": "pedas_banget"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M005",
+      "name": "Air Mineral",
+      "price": 3000,
+      "mood": [
+        "segar"
+      ],
+      "category": "Minuman",
+      "stock": true,
+      "description": "Air mineral dingin untuk menetralkan rasa pedas.",
+      "image": "/IMAGE_FIXX/Minuman/Air mineral.jpeg",
+      "customizations": []
+    },
+    {
+      "id": "M006",
+      "name": "Jus",
+      "price": 8000,
+      "mood": [
+        "segar",
+        "manis"
+      ],
+      "category": "Minuman",
+      "stock": true,
+      "description": "Jus buah segar dari pilihan buah harian. Gambar buah ditampilkan sebagai representasi menu jus.",
+      "image": "/IMAGE_FIXX/Minuman/Jus.jpeg",
+      "customizations": [
+        {
+          "id": "buah",
+          "name": "Pilihan Buah",
+          "type": "radio",
+          "default": "jeruk",
+          "options": [
+            {
+              "label": "Jeruk",
+              "value": "jeruk"
+            },
+            {
+              "label": "Mangga",
+              "value": "mangga"
+            },
+            {
+              "label": "Alpukat",
+              "value": "alpukat"
+            },
+            {
+              "label": "Buah sesuai stok",
+              "value": "stok"
+            }
+          ]
+        },
+        {
+          "id": "jus_request",
+          "name": "Request",
+          "type": "checkbox",
+          "options": [
+            {
+              "label": "Kurang manis",
+              "value": "kurang_manis"
+            },
+            {
+              "label": "Pakai es",
+              "value": "es"
+            },
+            {
+              "label": "Tanpa susu",
+              "value": "tanpa_susu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M007",
+      "name": "Es Blend",
+      "price": 1000,
+      "mood": [
+        "manis",
+        "segar"
+      ],
+      "category": "Minuman",
+      "stock": true,
+      "description": "Es blend seribuan dengan varian rasa dan topping yang bisa dicustom seperti jajan tempura.",
+      "image": "/IMAGE_FIXX/Minuman/Es Blend.jpeg",
+      "customizations": [
+        {
+          "id": "rasa",
+          "name": "Varian Rasa",
+          "type": "radio",
+          "default": "cokelat",
+          "options": [
+            {
+              "label": "Cokelat",
+              "value": "cokelat"
+            },
+            {
+              "label": "Strawberry",
+              "value": "strawberry"
+            },
+            {
+              "label": "Mangga",
+              "value": "mangga"
+            }
+          ]
+        },
+        {
+          "id": "blend_request",
+          "name": "Topping / Request",
+          "type": "checkbox",
+          "options": [
+            {
+              "label": "Choco chips",
+              "value": "choco_chips"
+            },
+            {
+              "label": "Whipped cream",
+              "value": "whipped_cream"
+            },
+            {
+              "label": "Kurang manis",
+              "value": "kurang_manis"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "orders": [],
+  "payments": [],
+  "statusLogs": []
+}

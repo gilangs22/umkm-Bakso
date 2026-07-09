@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bakso Mak Yas - QR Self-Order</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="customer-page">
+    <div class="web-shell">
+        <nav class="customer-nav">
+            <a class="brand-lockup" href="#home" aria-label="Bakso Mak Yas">
+                <span class="brand-badge">BY</span>
+                <span>
+                    <strong>Bakso Mak Yas</strong>
+                    <small>Order Sesuai Mood</small>
+                </span>
+            </a>
+            <div class="nav-actions">
+                <a href="#historySection">Riwayat</a>
+                <a href="/login.html">Dashboard</a>
+                <button class="cart-trigger" onclick="scrollToCart()" type="button">
+                    Keranjang <b id="cartCountBadge">0</b>
+                </button>
+            </div>
+        </nav>
+
+        <header class="web-hero" id="home">
+            <div class="hero-copy">
+                <p class="eyebrow">QR Self-Order Bakso Mak Yas</p>
+                <h1>Pesan Bakso Sesuai Mood Anda</h1>
+                <p class="lead">Scan QR, pilih mood dan menu, lalu langsung pesan untuk meja <b id="tableLabel">01</b>. Semua rekomendasi ditampilkan otomatis sesuai pilihan rasa.</p>
+                <div class="hero-actions">
+                    <button class="primary-btn" onclick="document.getElementById('moodSection').scrollIntoView({ behavior: 'smooth' })" type="button">Pilih Mood</button>
+                    <button class="secondary-btn" onclick="selectMood('')" type="button">Lihat Semua</button>
+                </div>
+            </div>
+            <div class="hero-visual" aria-label="Menu Bakso Mak Yas">
+                <img src="/IMAGE_FIXX/Sampul/Background_web_halaman_kantin.jpeg" alt="Sampul menu Bakso Mak Yas">
+                <div class="hero-ticket">
+                    <span>Mode Order</span>
+                    <strong>QR Meja <b id="moodTableLabel">01</b></strong>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="section-block mood-section" id="moodSection">
+                <div class="section-heading">
+                    <p class="eyebrow">Mood Kategori</p>
+                    <h2>Temukan rekomendasi menu berdasarkan mood</h2>
+                </div>
+                <div class="mood-grid-vertical" id="moodList"></div>
+            </section>
+
+            <section class="order-workspace" id="menuSection">
+                <aside class="filter-panel">
+                    <p class="eyebrow">Filter</p>
+                    <h2 id="currentMoodTitle">Semua Menu</h2>
+                    <div class="category-tabs">
+                        <button class="tab active" onclick="filterCategory('all')" type="button">Semua</button>
+                        <button class="tab" onclick="filterCategory('Makanan')" type="button">Makanan</button>
+                        <button class="tab" onclick="filterCategory('Minuman')" type="button">Minuman</button>
+                    </div>
+                </aside>
+
+                <section class="catalog-panel">
+                    <div class="catalog-top">
+                        <div>
+                            <p class="eyebrow">Rekomendasi Menu</p>
+                            <h2 id="menuHeroTitle">Jelajahi semua menu</h2>
+                        </div>
+                        <span id="menuCount">0 menu</span>
+                    </div>
+                    <div class="menu-grid-mobile" id="menuGrid"></div>
+                </section>
+
+                <aside class="cart-panel" id="cartPanel">
+                    <div class="cart-panel-header">
+                        <div>
+                            <p class="eyebrow">Pesanan Saya</p>
+                            <h2>Keranjang</h2>
+                        </div>
+                    </div>
+                    <div class="cart-body" id="cartItems"></div>
+                    <div class="cart-footer">
+                        <textarea id="orderNote" placeholder="Catatan tambahan, contoh: Level 5, tanpa bawang"></textarea>
+                        <div class="total-row">
+                            <span>Total Bayar</span>
+                            <strong id="cartTotal">Rp0</strong>
+                        </div>
+                        <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" type="button">Buat Pesanan</button>
+                    </div>
+                </aside>
+            </section>
+
+            <section class="section-block" id="historySection">
+                <div class="section-heading">
+                    <p class="eyebrow">Riwayat Pesanan</p>
+                    <h2>Lihat status dan pesanan sebelumnya</h2>
+                </div>
+                <div class="history-grid" id="historyList"></div>
+            </section>
+        </main>
+    </div>
+
+    <div class="status-overlay" id="statusOverlay">
+        <div class="status-modal">
+            <button class="icon-btn close-status" onclick="closeStatus()" aria-label="Tutup">×</button>
+            <div id="activeOrderContent"></div>
+        </div>
+    </div>
+
+    <div class="status-overlay" id="customizationModal">
+        <div class="customization-panel" style="width: 90%; max-width: 500px; max-height: 80vh; overflow-y: auto;">
+            <button class="icon-btn close-status" onclick="closeCustomization()" aria-label="Tutup">×</button>
+            <div id="customizationContent"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="/app.js"></script>
+</body>
+</html>
