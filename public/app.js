@@ -104,7 +104,7 @@ function selectMood(code) {
   state.selectedMood = code;
   const meta = moodMeta[code];
   document.getElementById("currentMoodTitle").textContent = meta ? meta.label : "Semua Menu";
-  document.getElementById("menuHeroTitle").textContent = meta ? `Rekomendasi ${meta.short}` : "Discover our menu";
+  document.getElementById("menuHeroTitle").textContent = meta ? `Rekomendasi ${meta.short}` : "Jelajahi semua menu";
   renderMoods();
   renderMenus();
   document.getElementById("menuSection").scrollIntoView({ behavior: "smooth", block: "start" });
